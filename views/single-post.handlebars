@@ -1,0 +1,53 @@
+<div class="container lg-12">
+    <div class="card">
+        <div class="card-header bg-dark">
+            <h5>{{post.title}}</h5>
+            <h5>Posted by {{post.username}} on {{format_date post.created_at}}</h5>
+        </div>
+        <div class="card-body">
+            <p class="card-text">{{post.article}}</p>
+        </div>
+    </div>
+</div>
+
+<div class="container lg-12">
+    <div class="comments">
+        {{#each post.Comments}}
+               <div class="card">
+            <div class="card-header bg-dark">
+
+            </div>
+            <div class="card-body">
+                <form>
+                    <h4>{{comment_text}} </h4>
+                    </br>
+                    {{User.username}} on {{format_date createdAt}}
+                </form>
+            </div>
+        </div>
+        {{/each}}
+    </div>
+</div>
+
+
+ {{#if loggedIn}} 
+<div class="container lg-12">
+    <div class="card">
+        <form class="comment-form">
+            <div class="card-header bg-dark">
+                <h5>Add a comment!</h5>
+            </div>
+            <div class="card-body">
+                <div> <textarea name="comment-body" style="width:100%" placeholder="Comment here!"></textarea>
+                    <button class="btn btn-secondary" type="submit">submit</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+{{/if}} 
+
+
+
+<script src="/javascript/comment.js"></script>

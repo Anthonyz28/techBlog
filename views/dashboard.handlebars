@@ -1,0 +1,54 @@
+{{#if posts.length}}
+<section>
+    <div class="container lg-12">
+        <h2>Your Posts</h2>
+        {{#each posts as |post|}}
+        <div class="container lg-12">
+            <div class="card">
+                <div class="card-header bg-dark">
+                    <h5>{{post.title}}</h5>
+                </div>
+                <div class="card-body">
+                    <p class="card-text">{{post.article}}</p>
+                    <a href="/edit/{{post.id}}">Edit Post</a>
+
+                </div>
+            </div>
+        </div>
+        {{/each}}
+    </div>
+</section>
+{{/if}}
+
+<div class="container lg-12">
+    <div class="card">
+        <div class="card-header bg-dark">
+
+            <h5>Create New Post</h5>
+
+        </div>
+        <div class="card-body">
+
+            <p class="card-text">Title</p>
+            <form class="new-post-form">
+
+                <div>
+                    <textarea name="post-title" style="width: 100%"></textarea>
+                </div>
+                <p class="card-text">Article</p>
+
+                <div>
+                    <textarea name="post-article" style="width: 100%"></textarea>
+                </div>
+                <p class="card-text">Username</p>
+                <div>
+                    <textarea name="post-username" style="width: 100%"></textarea>
+                </div>
+
+                <button class="btn btn-secondary" type="submit">submit</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script src="/javascript/add-post.js"></script>

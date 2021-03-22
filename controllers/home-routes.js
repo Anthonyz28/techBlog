@@ -11,13 +11,18 @@ router.get('/', (req, res) => {
             "id",
             "title",
             "contents",
-            "created_time"
+            "created_at"
         ],
-        order: [['created_time, "DESC']],
         include:[
             {
                 model: Comment,
-                attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_time'],
+                attributes: [
+                    'id',
+                    'comment_text', 
+                    'post_id', 
+                    'user_id', 
+                    'created_at'
+                ],
                 include: {
                     model: User,
                     attributes: ['username']
@@ -56,12 +61,17 @@ router.get("/post/:id", withAuth, (req, res) => {
             "id",
             "title",
             "contents",
-            "created_time"
+            "created_at"
         ],
         include: [
             {
                 model: Comment,
-                attributes: ["id", "comment_text", "post_id", "user_id", "created_time"],
+                attributes: ["id", 
+                    "comment_text", 
+                    "post_id", 
+                    "user_id", 
+                    "created_at"
+                ],
                 include: {
                     model: User,
                     attributes: ["username"]
@@ -75,7 +85,7 @@ router.get("/post/:id", withAuth, (req, res) => {
     })
         .then(dbPostData => {
             if (!dbPostData) {
-                res.status(404).json({ message: "No post found with this id" });
+                res.status(404).json({ message: "invalid id" });
                 return;
             }
 
